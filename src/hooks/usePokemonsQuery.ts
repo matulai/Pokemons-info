@@ -7,10 +7,10 @@ import axios from "axios";
 // "https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20"
 const usePokemonsQuery = () => {
   return useQuery<Record<string, PokemonResponse[]>>({
-    queryKey: ["https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20"],
+    queryKey: ["https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1304%22"],
     queryFn: async () => {
       const { data } = await axios.get<PokemonPaginationResponse>(
-        "https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20"
+        "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1304%22"
       );
       return generateAlphabeticAccess(data.results);
     },
