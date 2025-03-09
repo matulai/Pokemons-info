@@ -1,6 +1,8 @@
-import { PokemonResponse } from '@/types';
+import { PokemonResponse } from "@/types";
 
-function generateAlphabeticAccess(data: PokemonResponse[]): Record<string, PokemonResponse[]> {
+function generateAlphabeticAccess(
+  data: PokemonResponse[]
+): Record<string, PokemonResponse[]> {
   const groups: Record<string, PokemonResponse[]> = {};
 
   for (const pokemon of data) {

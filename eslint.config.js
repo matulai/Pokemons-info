@@ -1,6 +1,6 @@
-import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
+import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 import reactRefresh from "eslint-plugin-react-refresh";
-import pluginQuery from '@tanstack/eslint-plugin-query'
+import pluginQuery from "@tanstack/eslint-plugin-query";
 import reactHooks from "eslint-plugin-react-hooks";
 import tseslint from "typescript-eslint";
 import globals from "globals";
@@ -10,10 +10,10 @@ export default tseslint.config(
   { ignores: ["dist"] },
   {
     extends: [
-      js.configs.recommended, 
-      ...tseslint.configs.recommended, 
-      eslintPluginPrettierRecommended, 
-      ...pluginQuery.configs['flat/recommended']
+      js.configs.recommended,
+      ...tseslint.configs.recommended,
+      eslintPluginPrettierRecommended,
+      ...pluginQuery.configs["flat/recommended"],
     ],
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
@@ -30,7 +30,7 @@ export default tseslint.config(
         "warn",
         { allowConstantExport: true },
       ],
-      'prettier/prettier': 0,
+      "prettier/prettier": 0,
     },
   }
 );

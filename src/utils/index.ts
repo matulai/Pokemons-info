@@ -1,1 +1,1 @@
-export { default as generateAlphabeticAccess } from './generateAlphabeticAccess';
+export { default as generateAlphabeticAccess } from "./generateAlphabeticAccess";

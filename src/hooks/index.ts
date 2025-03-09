@@ -1,1 +1,1 @@
-export { default as usePokemonsQuery } from './usePokemonsQuery';
+export { default as usePokemonsQuery } from "./usePokemonsQuery";
