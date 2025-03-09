@@ -24,6 +24,7 @@
     "noUncheckedIndexedAccess": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
+    "noImplicitAny": false,
 
     /* Paths resolve*/
     "baseUrl": ".",
