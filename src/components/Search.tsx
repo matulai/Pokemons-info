@@ -1,18 +1,25 @@
-import { useNavigate } from 'react-router-dom'
+import { PokemonResponse } from '@/types';
 import { useState } from 'react'
 
-const Search = () => {
-  const navigate = useNavigate();
+interface SearchProps {
+  setPokemonsList: React.Dispatch<React.SetStateAction<PokemonResponse[]>>,
+  pokemonsOrdered: Record<string, PokemonResponse[]> | undefined,
+}
 
+const Search = ({setPokemonsList, pokemonsOrdered}: SearchProps) => {
   const [ text, setText] = useState('');
 
   function onEnter(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (e.key === 'Enter') {
-      if (text) {
-        navigate(`/pokemon/${text}`);
-      }
+    if (e.key === 'Enter' && text[0] && pokemonsOrdered) {
+      const pokemonsStartsWith: PokemonResponse[] = allStartWith(text, pokemonsOrdered[text[0]]);
+      setPokemonsList(pokemonsStartsWith);
     }
   };
+
+  function allStartWith(text: string, pokemons: PokemonResponse[] | undefined) {
+    if (!pokemons) return [];
+    return pokemons.filter(pokemon => pokemon.name.startsWith(text));
+  }
 
   return(
     <div className='search-input'>
