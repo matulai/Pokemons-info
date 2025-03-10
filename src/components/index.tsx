@@ -1,1 +1,2 @@
-export { default as Search } from "@/components/Search";
+export { default as Search } from "./Search";
+export { default as Button } from "./Button";
