@@ -8,20 +8,28 @@ interface SearchProps {
 
 const Search = ({ setPokemonsList, pokemonsOrdered }: SearchProps) => {
   const [text, setText] = useState("");
+  const [pokemonsOptions, setPokemonsOptions] = useState<PokemonResponse[]>([]);
 
   function onEnter(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (e.key === "Enter" && text[0] && pokemonsOrdered) {
-      const pokemonsStartsWith: PokemonResponse[] = allStartWith(
-        text,
-        pokemonsOrdered[text[0]]
-      );
-      setPokemonsList(pokemonsStartsWith);
+    if (e.key === "Enter" && text) {
+      setPokemonsList(pokemonsOptions);
+      setText("");
     }
   }
 
-  function allStartWith(text: string, pokemons: PokemonResponse[] | undefined) {
+  function allStartWith(text: string, pokemons: PokemonResponse[] | undefined, limit: number) {
     if (!pokemons) return [];
-    return pokemons.filter(pokemon => pokemon.name.startsWith(text));
+    return pokemons.filter(pokemon => pokemon.name.startsWith(text)).slice(0, limit);
+  }
+
+  function onChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setText(e.target.value);
+    const newText: string = e.target.value;
+    if(pokemonsOrdered && newText[0]) {
+      setPokemonsOptions(allStartWith(newText, pokemonsOrdered[newText[0]], 10));
+    } else {
+      setPokemonsOptions([]);
+    }
   }
 
   return (
@@ -29,11 +37,18 @@ const Search = ({ setPokemonsList, pokemonsOrdered }: SearchProps) => {
       <div className="search-input-text">Search pokemon</div>
       <input
         type="search"
-        onChange={e => setText(e.target.value)}
+        onChange={onChange}
         onKeyDown={onEnter}
         className="search-input-pokemons"
         placeholder="search pokemon"
       />
+      <ul className="search-result-options">
+        {pokemonsOptions.map((pokemon, index) => (
+          <li key={index}>
+            {pokemon.name}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
