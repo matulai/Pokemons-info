@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { HomePage } from "@/pages";
+import { HomePage, PokemonPage } from "@/pages";
 
 import "@/App.css";
 
@@ -12,6 +12,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/pokemon/:id" element={<PokemonPage />} />
         </Routes>
       </main>
       <footer className="page-footer">this is the footer</footer>
