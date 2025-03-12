@@ -1,15 +1,12 @@
-import { PlayIcon, ChevronUpIcon, ChevronDownIcon } from "@/icons";
+import { Button, Accordion, PokemonInformation, PokemonTypes } from "@/components";
 import { usePokemonQuery } from "@/hooks";
-import { useState } from "react";
-import { Button } from "@/components";
+import { PlayIcon } from "@/icons";
 import { useRef } from 'react';
 
 const PokemonPage = () => {
   const { data, error, isLoading } = usePokemonQuery();
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  const [showAboutContent, setShowAboutContent] = useState<boolean>(false);
 
   const togglePlay = () => {
     if (audioRef.current) {
@@ -31,22 +28,12 @@ const PokemonPage = () => {
         <Button onClick={togglePlay} children={<PlayIcon color="yellow" />} />
       </div>
       <div className="pokemon-about">
-        <div className="pokemon-about-container">
-          <div className="pokemon-about-container-header">
-            Information
-            <Button 
-              children={showAboutContent 
-                ? <ChevronDownIcon color="yellow" />
-                : <ChevronUpIcon color="yellow" />} 
-              onClick={() => setShowAboutContent(!showAboutContent)}
-            />
-          </div>
-          <div className="pokemon-about-container-content">
-
-          </div>
-        </div>
-        <div>Evolutions</div>
-        <div>Encounters</div>
+        <Accordion title="Information" children={PokemonInformation (data!.name, {
+          pokedex_number: data!.pokedex_number,
+          height: data!.height,
+          weight: data!.weight,
+        })} />
+        <Accordion title="Types" children={<PokemonTypes pokemonInfo={data!}/>} />
       </div>
     </div>
   )
