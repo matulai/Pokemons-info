@@ -5,7 +5,22 @@ interface PokemonTypes {
   pokemonInfo: Pokemon
 }
 
-// Inversigar, rompe si no le pasas un objeto
+interface contentImages {
+  title: string;
+  images: string[];
+}
+
+function ShowImages({title, images}: contentImages) {
+  return (
+    <div>
+      <span>{title}</span>
+      {images.map((imageUrl: string, index: number) => 
+        <img key={index} src={imageUrl} alt="type icon"/>
+      )}
+    </div>
+  )
+}
+
 const PokemonTypes = ({ pokemonInfo }: PokemonTypes) => {
   const { data, error, isLoading } = usePokemonTypeQuery(pokemonInfo.types[0]!);
 
@@ -14,18 +29,6 @@ const PokemonTypes = ({ pokemonInfo }: PokemonTypes) => {
   }
 
   console.log(error);
-  console.log("types",data);
-
-  function showImages(title: string, images: string[]) {
-    return (
-      <div>
-        <span>{title}</span>
-        {images.map((imageUrl: string, index: number) => 
-          <img key={index} src={imageUrl} alt="type icon"/>
-        )}
-      </div>
-    )
-  }
 
   return (
     <div>
@@ -33,12 +36,12 @@ const PokemonTypes = ({ pokemonInfo }: PokemonTypes) => {
         <span>Type: </span>
         <img src={data?.sprites} alt="type icon"/>
       </div>
-      {showImages("double_damage_from", data!.sprites_double_damage_from)}
-      {showImages("double_damage_to", data!.sprites_double_damage_to)}
-      {showImages("half_damage_from", data!.sprites_half_damage_from)}
-      {showImages("half_damage_to", data!.sprites_half_damage_to)}
-      {showImages("no_damage_from", data!.sprites_no_damage_from)}
-      {showImages("no_damage_to", data!.sprites_no_damage_to)}
+      <ShowImages title="double_damage_from" images={data!.sprites_double_damage_from}/>
+      <ShowImages title="double_damage_to" images={data!.sprites_double_damage_to}/>
+      <ShowImages title="half_damage_from" images={data!.sprites_half_damage_from}/>
+      <ShowImages title="half_damage_to" images={data!.sprites_half_damage_to}/>
+      <ShowImages title="no_damage_from" images={data!.sprites_no_damage_from}/>
+      <ShowImages title="no_damage_to" images={data!.sprites_no_damage_to}/>
     </div>
   )
 }
