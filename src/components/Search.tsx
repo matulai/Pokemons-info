@@ -1,5 +1,6 @@
 import { PokemonResponse } from "@/types";
 import { useState } from "react";
+import { Link } from "react-router-dom"
 
 interface SearchProps {
   setPokemonsList: React.Dispatch<React.SetStateAction<PokemonResponse[]>>;
@@ -45,7 +46,7 @@ const Search = ({ setPokemonsList, pokemonsOrdered }: SearchProps) => {
       <ul className="search-result-options">
         {pokemonsOptions.map((pokemon, index) => (
           <li key={index}>
-            {pokemon.name}
+            <Link to={`/pokemon/${pokemon.url.slice(34)}`}>{pokemon.name}</Link>
           </li>
         ))}
       </ul>
