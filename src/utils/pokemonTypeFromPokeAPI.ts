@@ -1,5 +1,11 @@
 import { PokemonType } from "@/types";
 
+
+/**
+ * 
+ * Convert a data from response of request type to type PokemonType.
+ *
+ */
 function pokemonTypeFromPokeAPI(pokeAPIPokemonType): PokemonType {
   return {
     sprites_double_damage_from: typesToListStringURL(
