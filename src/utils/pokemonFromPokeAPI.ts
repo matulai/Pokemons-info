@@ -10,15 +10,15 @@ const pokemonFromPokeAPI = (pokeAPIPokemon): Pokemon => {
     criesFile: pokeAPIPokemon.cries.latest,
     pokedex_number: pokeAPIPokemon.id,
     location_area_encounters: pokeAPIPokemon.location_area_encounters,
-  }
-}
+  };
+};
 
 interface typePokeAPI {
-  slot: number,
+  slot: number;
   type: {
-    name: string,
-    url: string,
-  },
+    name: string;
+    url: string;
+  };
 }
 
 function typesToListString(types: typePokeAPI[]) {

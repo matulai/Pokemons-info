@@ -1,6 +1,6 @@
 import { PokemonResponse } from "@/types";
 import { useState } from "react";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 interface SearchProps {
   setPokemonsList: React.Dispatch<React.SetStateAction<PokemonResponse[]>>;
@@ -8,26 +8,31 @@ interface SearchProps {
 }
 
 const Search = ({ setPokemonsList, pokemonsOrdered }: SearchProps) => {
-  const [text, setText] = useState("");
   const [pokemonsOptions, setPokemonsOptions] = useState<PokemonResponse[]>([]);
 
   function handleOnKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (e.key === "Enter" && text) {
+    if (e.key === "Enter" && pokemonsOptions.length > 0) {
       setPokemonsList(pokemonsOptions);
-      setText("");
     }
   }
 
-  function allStartWith(text: string, pokemons: PokemonResponse[] | undefined, limit: number) {
+  function allStartWith(
+    text: string,
+    pokemons: PokemonResponse[] | undefined,
+    limit: number
+  ) {
     if (!pokemons) return [];
-    return pokemons.filter(pokemon => pokemon.name.startsWith(text)).slice(0, limit);
+    return pokemons
+      .filter(pokemon => pokemon.name.startsWith(text))
+      .slice(0, limit);
   }
 
   function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setText(e.target.value);
     const newText: string = e.target.value;
-    if(pokemonsOrdered && newText[0]) {
-      setPokemonsOptions(allStartWith(newText, pokemonsOrdered[newText[0]], 10));
+    if (pokemonsOrdered && newText[0]) {
+      setPokemonsOptions(
+        allStartWith(newText, pokemonsOrdered[newText[0]], 10)
+      );
     } else {
       setPokemonsOptions([]);
     }
@@ -44,9 +49,11 @@ const Search = ({ setPokemonsList, pokemonsOrdered }: SearchProps) => {
         placeholder="search pokemon"
       />
       <ul className="search-result-options">
-        {pokemonsOptions.map((pokemon, index) => (
-          <li key={index}>
-            <Link to={`/pokemon/${pokemon.url.slice(34)}`}>{pokemon.name}</Link>
+        {pokemonsOptions.map(pokemon => (
+          <li key={pokemon.name}>
+            <Link to={`/pokemon/${pokemon.url.match(/\/(\d+)\/$/)?.[1] ?? ""}`}>
+              {pokemon.name}
+            </Link>
           </li>
         ))}
       </ul>

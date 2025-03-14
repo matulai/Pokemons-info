@@ -1,5 +1,5 @@
 interface ButtonProps {
-  children?: React.ReactNode,
+  children?: React.ReactNode;
   // type: 'primary';
   onClick?: () => void;
   title?: string;
@@ -18,7 +18,7 @@ const Button = ({ children, onClick, title }: ButtonProps) => {
       {title}
       {children}
     </button>
-  )
-}
+  );
+};
 
 export default Button;

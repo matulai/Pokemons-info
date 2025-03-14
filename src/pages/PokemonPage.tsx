@@ -1,7 +1,12 @@
-import { Button, Accordion, PokemonInformation, PokemonTypes } from "@/components";
+import {
+  Button,
+  Accordion,
+  PokemonInformation,
+  PokemonTypes,
+} from "@/components";
 import { usePokemonQuery } from "@/hooks";
 import { PlayIcon } from "@/icons";
-import { useRef } from 'react';
+import { useRef } from "react";
 
 const PokemonPage = () => {
   const { data, error, isLoading } = usePokemonQuery();
@@ -10,12 +15,12 @@ const PokemonPage = () => {
 
   const togglePlay = () => {
     if (audioRef.current) {
-        audioRef.current.play();
+      audioRef.current.play();
     }
   };
 
-  if(isLoading) {
-    return <div>loading...</div>
+  if (isLoading) {
+    return <div>loading...</div>;
   }
 
   console.log(error);
@@ -23,20 +28,31 @@ const PokemonPage = () => {
   return (
     <div>
       <div className="pokemon-presentation">
-        <img src={data?.imageUrl} alt="Imagen de un pokemon"/>
+        <img src={data?.imageUrl} alt="Imagen de un pokemon" />
         <audio ref={audioRef} src={data?.criesFile} />
         <Button onClick={togglePlay} children={<PlayIcon color="yellow" />} />
       </div>
       <div className="pokemon-about">
-        <Accordion title="Information" children={PokemonInformation (data!.name, {
-          pokedex_number: data!.pokedex_number,
-          height: data!.height,
-          weight: data!.weight,
-        })} />
-        <Accordion title="Types" children={<PokemonTypes pokemonInfo={data!}/>} />
+        <Accordion
+          title="Information"
+          children={
+            <PokemonInformation
+              title={data!.name}
+              informationList={{
+                pokedex_number: data!.pokedex_number,
+                height: data!.height,
+                weight: data!.weight,
+              }}
+            />
+          }
+        />
+        <Accordion
+          title="Types"
+          children={<PokemonTypes pokemonInfo={data!} />}
+        />
       </div>
     </div>
-  )
+  );
 };
 
 export default PokemonPage;

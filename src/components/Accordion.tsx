@@ -8,28 +8,34 @@ interface AccordionProps {
 }
 
 const Accordion = ({ title, children }: AccordionProps) => {
-
   const [showAboutContent, setShowAboutContent] = useState<boolean>(false);
 
   return (
     <div className="pokemon-about-container">
       <div className="pokemon-about-container-header">
         {title}
-        <Button 
-          children={showAboutContent 
-            ? <ChevronDownIcon color="yellow" />
-            : <ChevronUpIcon color="yellow" />} 
+        <Button
+          children={
+            showAboutContent ? (
+              <ChevronDownIcon color="yellow" />
+            ) : (
+              <ChevronUpIcon color="yellow" />
+            )
+          }
           onClick={() => setShowAboutContent(!showAboutContent)}
         />
       </div>
-      <div className={showAboutContent? 
-          "pokemon-about-container-content"
-        : "pokemon-about-container-content no-visible"
-      }>
+      <div
+        className={
+          showAboutContent
+            ? "pokemon-about-container-content"
+            : "pokemon-about-container-content no-visible"
+        }
+      >
         {children}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Accordion;

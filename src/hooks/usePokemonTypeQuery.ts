@@ -6,9 +6,7 @@ const usePokemonTypeQuery = (url: string) => {
   return useQuery({
     queryKey: [`${url}`],
     queryFn: async () => {
-      const { data } = await axios.get(
-        `${url}`
-      );
+      const { data } = await axios.get(`${url}`);
       return pokemonTypeFromPokeAPI(data);
     },
   });
