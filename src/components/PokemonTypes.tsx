@@ -28,7 +28,7 @@ const PokemonTypes = ({ pokemonInfo }: PokemonTypes) => {
     return <div> loading... </div>;
   }
 
-  console.log(error);
+  console.log(error?.message);
 
   return (
     <div>
