@@ -3,17 +3,18 @@ import { PokemonsList } from "@/components";
 import { SimplePokemon } from "@/types";
 import { useState } from "react";
 
+import "@/styles/Search.css";
+
 interface SearchProps {
-  setPokemonsList: React.Dispatch<React.SetStateAction<SimplePokemon[]>>;
   letterPokemon: Record<string, SimplePokemon[]> | undefined;
 }
 
-const Search = ({ setPokemonsList, letterPokemon }: SearchProps) => {
+const Search = ({ letterPokemon }: SearchProps) => {
   const [pokemonsOptions, setPokemonsOptions] = useState<SimplePokemon[]>([]);
 
   function handleOnKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === "Enter" && pokemonsOptions.length > 0) {
-      setPokemonsList(pokemonsOptions);
+      console.log("todo");
     }
   }
 
