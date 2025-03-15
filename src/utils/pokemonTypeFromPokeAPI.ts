@@ -3,7 +3,7 @@ import { PokemonType } from "@/types";
 
 /**
  * 
- * Convert a data from response of request type to type PokemonType.
+ * Convert a data from response of request to type PokemonType.
  *
  */
 function pokemonTypeFromPokeAPI(pokeAPIPokemonType): PokemonType {

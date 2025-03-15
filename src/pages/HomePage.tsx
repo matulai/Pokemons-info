@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const { data, error, isLoading } = usePokemonsQuery();
+  
   const [pokemonsList, setPokemonsList] = useState<SimplePokemon[]>([]);
 
   if (isLoading) {
@@ -16,7 +17,7 @@ const HomePage = () => {
 
   return (
     <>
-      <Search setPokemonsList={setPokemonsList} pokemonsOrdered={data} />
+      <Search setPokemonsList={setPokemonsList} letterPokemon={data} />
       <ul className="pokemons-list">
         {pokemonsList.map((pokemon: SimplePokemon, index: number) => (
           <li className="pokemons-list-pokemon" key={index}>

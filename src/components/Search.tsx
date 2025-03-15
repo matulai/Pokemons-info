@@ -5,10 +5,10 @@ import { useState } from "react";
 
 interface SearchProps {
   setPokemonsList: React.Dispatch<React.SetStateAction<SimplePokemon[]>>;
-  letter_Pokemon: Record<string, SimplePokemon[]> | undefined;
+  letterPokemon: Record<string, SimplePokemon[]> | undefined;
 }
 
-const Search = ({ setPokemonsList, letter_Pokemon }: SearchProps) => {
+const Search = ({ setPokemonsList, letterPokemon }: SearchProps) => {
   const [pokemonsOptions, setPokemonsOptions] = useState<SimplePokemon[]>([]);
 
   function handleOnKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
@@ -19,9 +19,9 @@ const Search = ({ setPokemonsList, letter_Pokemon }: SearchProps) => {
 
   function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
     const newText: string = e.target.value;
-    if (letter_Pokemon && newText[0]) {
+    if (letterPokemon && newText[0]) {
       setPokemonsOptions(
-        allSimplePokemonsStartsWith(newText, letter_Pokemon[newText[0]])
+        allSimplePokemonsStartsWith(newText, letterPokemon[newText[0]])
       );
     } else {
       setPokemonsOptions([]);

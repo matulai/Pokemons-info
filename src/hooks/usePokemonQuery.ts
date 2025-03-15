@@ -1,7 +1,7 @@
 import { pokemonFromPokeAPI } from "@/utils";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import type Pokemon from "@/types/pokemon";
+import { Pokemon } from "@/types";
 import axios from "axios";
 
 const usePokemonQuery = () => {
