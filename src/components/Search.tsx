@@ -1,13 +1,14 @@
+import { allSimplePokemonsStartsWith } from "@/utils";
 import { PokemonsList } from "@/components";
 import { SimplePokemon } from "@/types";
 import { useState } from "react";
 
 interface SearchProps {
   setPokemonsList: React.Dispatch<React.SetStateAction<SimplePokemon[]>>;
-  pokemonsOrdered: Record<string, SimplePokemon[]> | undefined;
+  letter_Pokemon: Record<string, SimplePokemon[]> | undefined;
 }
 
-const Search = ({ setPokemonsList, pokemonsOrdered }: SearchProps) => {
+const Search = ({ setPokemonsList, letter_Pokemon }: SearchProps) => {
   const [pokemonsOptions, setPokemonsOptions] = useState<SimplePokemon[]>([]);
 
   function handleOnKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
@@ -16,22 +17,11 @@ const Search = ({ setPokemonsList, pokemonsOrdered }: SearchProps) => {
     }
   }
 
-  function allStartWith(
-    text: string,
-    pokemons: SimplePokemon[] | undefined,
-    limit: number
-  ) {
-    if (!pokemons) return [];
-    return pokemons
-      .filter(pokemon => pokemon.name.startsWith(text))
-      .slice(0, limit);
-  }
-
   function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
     const newText: string = e.target.value;
-    if (pokemonsOrdered && newText[0]) {
+    if (letter_Pokemon && newText[0]) {
       setPokemonsOptions(
-        allStartWith(newText, pokemonsOrdered[newText[0]], 10)
+        allSimplePokemonsStartsWith(newText, letter_Pokemon[newText[0]])
       );
     } else {
       setPokemonsOptions([]);
