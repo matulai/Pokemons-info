@@ -1,16 +1,16 @@
-import { PokemonResponse } from "@/types";
+import { SimplePokemon } from "@/types";
 
 /**
- * Sorts a list of PokemonResponse objects alphabetically by name.
+ * Sorts a list of SimplePokemon objects alphabetically by name.
  * Returns a record where the keys are the first letter of each Pokémon's name.
  *
- * @param {PokemonResponse[]} data - The list of Pokémon to be sorted.
- * @returns {Record<string, PokemonResponse[]>} - An object grouping Pokémon by their first letter.
+ * @param {SimplePokemon[]} data - The list of Pokémon to be sorted.
+ * @returns {Record<string, SimplePokemon[]>} - An object grouping Pokémon by their first letter.
  */
 function generateAlphabeticAccess(
-  data: PokemonResponse[]
-): Record<string, PokemonResponse[]> {
-  const groups: Record<string, PokemonResponse[]> = {};
+  data: SimplePokemon[]
+): Record<string, SimplePokemon[]> {
+  const groups: Record<string, SimplePokemon[]> = {};
 
   for (const pokemon of data) {
     const firstLetter = pokemon.name[0]!.toLowerCase();

@@ -1,14 +1,14 @@
-import { PokemonResponse } from "@/types";
+import { PokemonsList } from "@/components";
+import { SimplePokemon } from "@/types";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 interface SearchProps {
-  setPokemonsList: React.Dispatch<React.SetStateAction<PokemonResponse[]>>;
-  pokemonsOrdered: Record<string, PokemonResponse[]> | undefined;
+  setPokemonsList: React.Dispatch<React.SetStateAction<SimplePokemon[]>>;
+  pokemonsOrdered: Record<string, SimplePokemon[]> | undefined;
 }
 
 const Search = ({ setPokemonsList, pokemonsOrdered }: SearchProps) => {
-  const [pokemonsOptions, setPokemonsOptions] = useState<PokemonResponse[]>([]);
+  const [pokemonsOptions, setPokemonsOptions] = useState<SimplePokemon[]>([]);
 
   function handleOnKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === "Enter" && pokemonsOptions.length > 0) {
@@ -18,7 +18,7 @@ const Search = ({ setPokemonsList, pokemonsOrdered }: SearchProps) => {
 
   function allStartWith(
     text: string,
-    pokemons: PokemonResponse[] | undefined,
+    pokemons: SimplePokemon[] | undefined,
     limit: number
   ) {
     if (!pokemons) return [];
@@ -48,15 +48,7 @@ const Search = ({ setPokemonsList, pokemonsOrdered }: SearchProps) => {
         className="search-input-pokemons"
         placeholder="search pokemon"
       />
-      <ul className="search-result-options">
-        {pokemonsOptions.map(pokemon => (
-          <li key={pokemon.name}>
-            <Link to={`/pokemon/${pokemon.url.match(/\/(\d+)\/$/)?.[1] ?? ""}`}>
-              {pokemon.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <PokemonsList pokemonsList={ pokemonsOptions }/>
     </div>
   );
 };

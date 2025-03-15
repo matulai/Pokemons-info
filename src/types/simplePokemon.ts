@@ -2,12 +2,12 @@ interface PokemonPaginationResponse {
   count: number;
   next: string;
   previous: string;
-  results: PokemonResponse[];
+  results: SimplePokemon[];
 }
 
-interface PokemonResponse {
+interface SimplePokemon {
   name: string;
   url: string;
 }
 
-export type { PokemonPaginationResponse, PokemonResponse };
+export type { PokemonPaginationResponse, SimplePokemon };
