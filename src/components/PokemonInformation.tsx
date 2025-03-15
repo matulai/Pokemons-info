@@ -1,12 +1,10 @@
 interface PokemonInformationProps {
   title: string;
-  informationList: InformationList;
-}
-
-interface InformationList {
-  pokedex_number: number;
-  height: number;
-  weight: number;
+  informationList: {
+    pokedex_number: number;
+    height: number;
+    weight: number;
+  };
 }
 
 const PokemonInformation = ({
