@@ -38,7 +38,7 @@ const Search = ({ setPokemonsList, letterPokemon }: SearchProps) => {
         className="search-input-pokemons"
         placeholder="search pokemon"
       />
-      <PokemonsList pokemonsList={ pokemonsOptions }/>
+      <PokemonsList pokemonsList={pokemonsOptions} />
     </div>
   );
 };

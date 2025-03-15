@@ -1,7 +1,7 @@
 import { Pokemon } from "@/types";
 
 /**
- * 
+ *
  * Convert a data from response of request pokemon to type Pokemon.
  *
  */

@@ -2,7 +2,7 @@ import { SimplePokemon } from "@/types";
 import { Link } from "react-router-dom";
 
 interface PokemonsListProps {
-  pokemonsList: SimplePokemon[]
+  pokemonsList: SimplePokemon[];
 }
 
 const PokemonsList = ({ pokemonsList }: PokemonsListProps) => {
@@ -15,8 +15,8 @@ const PokemonsList = ({ pokemonsList }: PokemonsListProps) => {
           </Link>
         </li>
       ))}
-    </ul>    
-  )
-}
+    </ul>
+  );
+};
 
 export default PokemonsList;

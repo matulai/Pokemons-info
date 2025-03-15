@@ -11,7 +11,7 @@ const ImagesList = ({ title, images }: contentImages) => {
         <img key={index} src={imageUrl} alt="type icon" />
       ))}
     </div>
-  )
-}
+  );
+};
 
 export default ImagesList;

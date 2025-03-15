@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const { data, error, isLoading } = usePokemonsQuery();
-  
+
   const [pokemonsList, setPokemonsList] = useState<SimplePokemon[]>([]);
 
   if (isLoading) {
