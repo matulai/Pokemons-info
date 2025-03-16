@@ -9,13 +9,15 @@ function App() {
       <header className="page-header">
         <h1>Pokemon info</h1>
       </header>
-      <main>
+      <main className="page-main">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/pokemon/:id" element={<PokemonPage />} />
         </Routes>
       </main>
-      <footer className="page-footer">this is the footer</footer>
+      <footer className="page-footer">
+          <p>© 2025 Pokemon info.</p>
+      </footer>
     </BrowserRouter>
   );
 }
