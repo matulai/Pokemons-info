@@ -12,7 +12,7 @@ const HomePage = () => {
 
   return (
     <>
-      <Search letterPokemon={data} />
+      <Search letterPokemonRecord={data} />
     </>
   );
 };

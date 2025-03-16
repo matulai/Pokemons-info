@@ -1,6 +1,6 @@
 .pokemons-list {
   overflow-y: auto;
-  max-height: 220px;
+  max-height: 230px;
   padding: 0rem;
 }
 
@@ -21,4 +21,8 @@
   border-top-left-radius: 6.5px;
   border-top-right-radius: 6.5px;
   border-top: 1px solid;
+}
+
+.active {
+  background-color: #a5a5a5
 }

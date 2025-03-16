@@ -4,14 +4,15 @@ import { Link } from "react-router-dom";
 import "@/styles/PokemonsList.css";
 
 interface PokemonsListProps {
+  activeIndex: number;
   pokemonsList: SimplePokemon[];
 }
 
-const PokemonsList = ({ pokemonsList }: PokemonsListProps) => {
+const PokemonsList = ({ pokemonsList, activeIndex }: PokemonsListProps) => {
   return (
-    <ul className="pokemons-list">
-      {pokemonsList.map(pokemon => (
-        <li className="pokemons-list-pokemon" key={pokemon.name}>
+    <ul id="pokemons-list-box" role="listbox" className="pokemons-list">
+      {pokemonsList.map((pokemon, index) => (
+        <li id={`pokemons-list-box-option${index}`} role="option" className={`pokemons-list-pokemon ${index === activeIndex ? "active" : ""}`} key={pokemon.name}>
           <Link to={`/pokemon/${pokemon.url.match(/\/(\d+)\/$/)?.[1] ?? ""}`}>
             {pokemon.name}
           </Link>
