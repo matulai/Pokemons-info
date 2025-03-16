@@ -31,7 +31,6 @@ const Search = ({ letterPokemon }: SearchProps) => {
 
   return (
     <div className="search-input">
-      <div className="search-input-text">Search pokemon</div>
       <input
         type="search"
         onChange={handleOnChange}
