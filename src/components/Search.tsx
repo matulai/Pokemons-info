@@ -1,8 +1,8 @@
 import { allSimplePokemonsStartsWith } from "@/utils";
+import { useState, useRef } from "react";
 import { SimplePokemon } from "@/types";
 import { PokemonsList } from "@/components";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 import "@/styles/Search.css";
 
@@ -13,6 +13,8 @@ interface SearchProps {
 const Search = ({ letterPokemonRecord }: SearchProps) => {
   const [pokemonsOptions, setPokemonsOptions] = useState<SimplePokemon[]>([]);
   const [activeIndex, setActiveIndex] = useState<number>(0);
+
+  const listRef = useRef<HTMLUListElement>(null);
 
   const navigate = useNavigate();
 
@@ -54,7 +56,11 @@ const Search = ({ letterPokemonRecord }: SearchProps) => {
   }
 
   function handleOnBlur() {
-    setPokemonsOptions([]);
+    setTimeout(() => {
+      if (!listRef.current?.contains(document.activeElement)) {
+        setPokemonsOptions([]);
+      }
+    }, 100);
   }
 
   return (
@@ -72,7 +78,9 @@ const Search = ({ letterPokemonRecord }: SearchProps) => {
         aria-expanded="true"
         aria-activedescendant={`pokemons-list-box-option${activeIndex}`}
       />
-      <PokemonsList pokemonsList={pokemonsOptions} activeIndex={activeIndex} />
+      <ul ref={listRef} id="pokemons-list-box" role="listbox" className="pokemons-list">
+        <PokemonsList pokemonsList={pokemonsOptions} activeIndex={activeIndex} />
+      </ul>
     </div>
   );
 };
