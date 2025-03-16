@@ -1,6 +1,8 @@
 import { SimplePokemon } from "@/types";
 import { Link } from "react-router-dom";
 
+import "@/styles/PokemonsList.css";
+
 interface PokemonsListProps {
   pokemonsList: SimplePokemon[];
 }

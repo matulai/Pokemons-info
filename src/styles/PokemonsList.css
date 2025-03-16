@@ -1,0 +1,24 @@
+.pokemons-list {
+  overflow-y: auto;
+  max-height: 220px;
+  padding: 0rem;
+}
+
+.pokemons-list-pokemon {
+  border-left: 1px solid;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+  padding: 0.25rem 0;
+}
+
+.pokemons-list-pokemon:last-child {
+  border-bottom-left-radius: 6.5px;
+  border-bottom-right-radius: 6.5px;
+  border-bottom: 1px solid;
+}
+
+.pokemons-list-pokemon:first-child {
+  border-top-left-radius: 6.5px;
+  border-top-right-radius: 6.5px;
+  border-top: 1px solid;
+}

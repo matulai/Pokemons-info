@@ -26,7 +26,7 @@ const PokemonPage = () => {
   console.log(error?.message);
 
   return (
-    <div>
+    <>
       <div className="pokemon-presentation">
         <img src={data?.imageUrl} alt="Imagen de un pokemon" />
         <audio ref={audioRef} src={data?.criesFile} />
@@ -51,7 +51,7 @@ const PokemonPage = () => {
           children={<PokemonTypes pokemonInfo={data!} />}
         />
       </div>
-    </div>
+    </>
   );
 };
 
