@@ -58,3 +58,10 @@ button {
 ul {
   list-style: none;
 }
+
+input {
+  display: block;
+}
+input:focus {
+  outline: none;
+}
