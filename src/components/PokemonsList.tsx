@@ -6,13 +6,19 @@ import "@/styles/PokemonsList.css";
 interface PokemonsListProps {
   activeIndex?: number;
   pokemonsList: SimplePokemon[];
+  inputText?: string;
+  visibleSearch?: boolean;
 }
 
-const PokemonsList = ({ pokemonsList, activeIndex }: PokemonsListProps) => {
+const PokemonsList = ({ pokemonsList, activeIndex, inputText, visibleSearch = false }: PokemonsListProps) => {
   return (
     <>
+      {visibleSearch &&
+      <li id="pokemons-list-box-option0" role="option" className={`pokemons-list-pokemon ${activeIndex ===  0? "active" : ""}`} key={"search-value"}>
+        Search for: <b>{inputText}</b>
+      </li>}
       {pokemonsList.map((pokemon, index) => (
-        <li id={activeIndex? `pokemons-list-box-option${index}`: undefined} role="option" className={`pokemons-list-pokemon ${index === activeIndex ? "active" : ""}`} key={pokemon.name}>
+        <li id={activeIndex? `pokemons-list-box-option${index + 1}`: undefined} role="option" className={`pokemons-list-pokemon ${activeIndex === index + 1 ? "active" : ""}`} key={pokemon.name}>
           <Link className="pokemons-list-pokemon-link" to={`/pokemon/${pokemon.url.match(/\/(\d+)\/$/)?.[1] ?? ""}`}>
             {pokemon.name}
           </Link>

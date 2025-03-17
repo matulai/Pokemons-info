@@ -11,23 +11,26 @@ interface SearchProps {
 }
 
 const Search = ({ letterPokemonRecord }: SearchProps) => {
-  const [pokemonsOptions, setPokemonsOptions] = useState<SimplePokemon[]>([]);
   const [activeIndex, setActiveIndex] = useState<number>(0);
+
+  const [pokemonsOptions, setPokemonsOptions] = useState<SimplePokemon[]>([]);
+  const [inputText, setInputText] = useState<string>("");
 
   const listRef = useRef<HTMLUListElement>(null);
 
   const navigate = useNavigate();
 
   function handleOnKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+    // Se aumenta en 1 a la longitud para tener en cuenta el search.
     if (event.key === "ArrowDown") {
+      event.preventDefault();
       setActiveIndex(prev => {
-        const actualIndex = pokemonsOptions.length === prev + 1? 0 : prev + 1;
-        return Math.min(actualIndex, pokemonsOptions.length - 1)
+        return (pokemonsOptions.length + 1) === prev + 1? 0 : prev + 1;
       });
     } else if (event.key === "ArrowUp") {
+      event.preventDefault();
       setActiveIndex(prev => {
-        const actualIndex = (prev - 1) < 0 ? pokemonsOptions.length - 1 : prev - 1;
-        return Math.max(actualIndex, 0)
+        return (prev - 1) < 0 ? pokemonsOptions.length : prev - 1;
       });
     } else if (event.key === "PageDown") {
       // Fn + ArrowDown (Ir al último)
@@ -37,7 +40,7 @@ const Search = ({ letterPokemonRecord }: SearchProps) => {
       setActiveIndex(0);
     } else if (event.key === "Enter") {
       // Redirigir al enlace activo si se presiona Enter
-      const selectedPokemon = pokemonsOptions[activeIndex];
+      const selectedPokemon = pokemonsOptions[activeIndex - 1];
       if (selectedPokemon) {
         navigate(`/pokemon/${selectedPokemon.url.match(/\/(\d+)\/$/)?.[1] ?? ""}`);
       }
@@ -46,9 +49,10 @@ const Search = ({ letterPokemonRecord }: SearchProps) => {
 
   function handleOnChange(event: React.ChangeEvent<HTMLInputElement>) {
     const newText: string = event.target.value;
+    setInputText(newText);
     if (letterPokemonRecord && newText[0]) {
       setPokemonsOptions(
-        allSimplePokemonsStartsWith(newText, letterPokemonRecord[newText[0]]).slice(0, 7)
+        allSimplePokemonsStartsWith(newText, letterPokemonRecord[newText[0]]).slice(0, 6)
       );
     } else {
       setPokemonsOptions([]);
@@ -79,7 +83,7 @@ const Search = ({ letterPokemonRecord }: SearchProps) => {
         aria-activedescendant={`pokemons-list-box-option${activeIndex}`}
       />
       <ul ref={listRef} id="pokemons-list-box" role="listbox" className="pokemons-list">
-        <PokemonsList pokemonsList={pokemonsOptions} activeIndex={activeIndex} />
+        <PokemonsList pokemonsList={pokemonsOptions} activeIndex={activeIndex} inputText={inputText} visibleSearch={pokemonsOptions.length !== 0}/>
       </ul>
     </div>
   );
