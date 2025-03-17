@@ -81,11 +81,11 @@ const Search = ({ letterPokemonRecord, setPokemonSearchList }: SearchProps) => {
         onKeyDown={handleOnKeyDown}
         className="search-input-pokemons"
         placeholder="search pokemon"
-        aria-controls="pokemons-list-box"
+        aria-controls="search-input-pokemons-list-box"
         aria-expanded="true"
         aria-activedescendant={`pokemons-list-box-option${activeIndex}`}
       />
-      <ul ref={listRef} id="pokemons-list-box" role="listbox" className="pokemons-list">
+      <ul ref={listRef} id="search-input-pokemons-list-box" role="listbox" className="search-input-pokemons-list">
         <PokemonsOptionsList pokemonsList={pokemonsOptions} activeIndex={activeIndex} inputText={inputText} setPokemonSearchList={setPokemonSearchList}/>
       </ul>
     </div>

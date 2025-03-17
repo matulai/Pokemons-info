@@ -12,7 +12,7 @@
   padding: 0.75rem 1rem;
 }
 
-.pokemons-list {
+.search-input-pokemons-list {
   overflow-y: auto;
   max-height: 230px;
   padding: 0rem;
