@@ -1,7 +1,7 @@
 import { allSimplePokemonsStartsWith } from "@/utils";
+import { PokemonsOptionsList } from "@/components";
 import { useState, useRef } from "react";
 import { SimplePokemon } from "@/types";
-import { PokemonsList } from "@/components";
 import { useNavigate } from "react-router-dom";
 
 import "@/styles/Search.css";
@@ -84,7 +84,7 @@ const Search = ({ letterPokemonRecord, setPokemonSearchList }: SearchProps) => {
         aria-activedescendant={`pokemons-list-box-option${activeIndex}`}
       />
       <ul ref={listRef} id="pokemons-list-box" role="listbox" className="pokemons-list">
-        <PokemonsList pokemonsList={pokemonsOptions} activeIndex={activeIndex} inputText={inputText} visibleSearch={pokemonsOptions.length !== 0} setPokemonSearchList={setPokemonSearchList}/>
+        <PokemonsOptionsList pokemonsList={pokemonsOptions} activeIndex={activeIndex} inputText={inputText} visibleSearch={pokemonsOptions.length !== 0} setPokemonSearchList={setPokemonSearchList}/>
       </ul>
     </div>
   );

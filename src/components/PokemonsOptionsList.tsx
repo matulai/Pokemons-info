@@ -2,9 +2,9 @@ import { SimplePokemon } from "@/types";
 import { Button } from "@/components";
 import { Link } from "react-router-dom";
 
-import "@/styles/PokemonsList.css";
+import "@/styles/PokemonsOptionsList.css";
 
-interface PokemonsListProps {
+interface PokemonsOptionsListProps {
   activeIndex?: number;
   pokemonsList: SimplePokemon[];
   inputText?: string;
@@ -12,7 +12,7 @@ interface PokemonsListProps {
   setPokemonSearchList?: React.Dispatch<React.SetStateAction<SimplePokemon[]>>; 
 }
 
-const PokemonsList = ({ pokemonsList, activeIndex, inputText, visibleSearch = false, setPokemonSearchList }: PokemonsListProps) => {
+const PokemonsOptionsList = ({ pokemonsList, activeIndex, inputText, visibleSearch = false, setPokemonSearchList }: PokemonsOptionsListProps) => {
   return (
     <>
       {visibleSearch &&
@@ -30,4 +30,4 @@ const PokemonsList = ({ pokemonsList, activeIndex, inputText, visibleSearch = fa
   );
 };
 
-export default PokemonsList;
+export default PokemonsOptionsList;
