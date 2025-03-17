@@ -1,20 +1,21 @@
+import "@/styles/Button.css"
+
 interface ButtonProps {
   children?: React.ReactNode;
-  // type: 'primary';
+  type: 'simpleButton';
   onClick?: () => void;
   title?: string;
 }
 
-const Button = ({ children, onClick, title }: ButtonProps) => {
-  // const styles = {
-  //   primary: 'button-rectangle color-yellow small',
-  //   secondary: 'button-circle color-white small',
-  // };
+const Button = ({ children, onClick, title, type }: ButtonProps) => {
+  const styles = {
+    simpleButton: "cover-all",
+  };
 
-  // const className = styles[type] || '';
+  const className = styles[type] || '';
 
   return (
-    <button onClick={onClick}>
+    <button className={className} onClick={onClick}>
       {title}
       {children}
     </button>
