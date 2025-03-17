@@ -8,7 +8,7 @@ import "@/styles/Search.css";
 
 interface SearchProps {
   letterPokemonRecord?: Record<string, SimplePokemon[]>;
-  setPokemonSearchList?: React.Dispatch<React.SetStateAction<SimplePokemon[]>>; 
+  setPokemonSearchList: React.Dispatch<React.SetStateAction<SimplePokemon[]>>; 
 }
 
 const Search = ({ letterPokemonRecord, setPokemonSearchList }: SearchProps) => {
@@ -44,6 +44,8 @@ const Search = ({ letterPokemonRecord, setPokemonSearchList }: SearchProps) => {
       const selectedPokemon = pokemonsOptions[activeIndex - 1];
       if (selectedPokemon) {
         navigate(`/pokemon/${selectedPokemon.url.match(/\/(\d+)\/$/)?.[1] ?? ""}`);
+      } else {
+        setPokemonSearchList(pokemonsOptions);
       }
     }
   }
@@ -84,7 +86,7 @@ const Search = ({ letterPokemonRecord, setPokemonSearchList }: SearchProps) => {
         aria-activedescendant={`pokemons-list-box-option${activeIndex}`}
       />
       <ul ref={listRef} id="pokemons-list-box" role="listbox" className="pokemons-list">
-        <PokemonsOptionsList pokemonsList={pokemonsOptions} activeIndex={activeIndex} inputText={inputText} visibleSearch={pokemonsOptions.length !== 0} setPokemonSearchList={setPokemonSearchList}/>
+        <PokemonsOptionsList pokemonsList={pokemonsOptions} activeIndex={activeIndex} inputText={inputText} setPokemonSearchList={setPokemonSearchList}/>
       </ul>
     </div>
   );

@@ -5,23 +5,22 @@ import { Link } from "react-router-dom";
 import "@/styles/PokemonsOptionsList.css";
 
 interface PokemonsOptionsListProps {
-  activeIndex?: number;
+  setPokemonSearchList: React.Dispatch<React.SetStateAction<SimplePokemon[]>>; 
   pokemonsList: SimplePokemon[];
-  inputText?: string;
-  visibleSearch?: boolean;
-  setPokemonSearchList?: React.Dispatch<React.SetStateAction<SimplePokemon[]>>; 
+  activeIndex: number;
+  inputText: string;
 }
 
-const PokemonsOptionsList = ({ pokemonsList, activeIndex, inputText, visibleSearch = false, setPokemonSearchList }: PokemonsOptionsListProps) => {
+const PokemonsOptionsList = ({ pokemonsList, activeIndex, inputText, setPokemonSearchList }: PokemonsOptionsListProps) => {
   return (
     <>
-      {visibleSearch &&
-      <li id="pokemons-list-box-option0" role="option" className={`pokemons-list-pokemon ${activeIndex ===  0? "active" : ""}`} key={"search-value"}>
-        <Button children={<span>Search for: <b>{inputText}</b></span>} type="simpleButton" onClick={() => setPokemonSearchList? setPokemonSearchList(pokemonsList ?? []): undefined}/>
+      {pokemonsList.length !== 0 &&
+      <li id="pokemons-options-list-box-option0" role="option" className={`pokemons-options-list-pokemon ${activeIndex ===  0? "active" : ""}`} key={"search-value"}>
+        <Button children={<span>Search for: <b>{inputText}</b></span>} type="simpleButton" onClick={() => setPokemonSearchList(pokemonsList)}/>
       </li>}
       {pokemonsList.map((pokemon, index) => (
-        <li id={activeIndex? `pokemons-list-box-option${index + 1}`: undefined} role="option" className={`pokemons-list-pokemon ${activeIndex === index + 1 ? "active" : ""}`} key={pokemon.name}>
-          <Link className="pokemons-list-pokemon-link" to={`/pokemon/${pokemon.url.match(/\/(\d+)\/$/)?.[1] ?? ""}`}>
+        <li id={`pokemons-options-list-box-option${index + 1}`} role="option" className={`pokemons-options-list-pokemon ${activeIndex === index + 1 ? "active" : ""}`} key={pokemon.name}>
+          <Link className="pokemons-options-list-pokemon-link" to={`/pokemon/${pokemon.url.match(/\/(\d+)\/$/)?.[1] ?? ""}`}>
             {pokemon.name}
           </Link>
         </li>
