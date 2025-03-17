@@ -1,4 +1,5 @@
 import { SimplePokemon } from "@/types";
+import { Button } from "@/components";
 import { Link } from "react-router-dom";
 
 import "@/styles/PokemonsList.css";
@@ -8,14 +9,15 @@ interface PokemonsListProps {
   pokemonsList: SimplePokemon[];
   inputText?: string;
   visibleSearch?: boolean;
+  setPokemonSearchList?: React.Dispatch<React.SetStateAction<SimplePokemon[]>>; 
 }
 
-const PokemonsList = ({ pokemonsList, activeIndex, inputText, visibleSearch = false }: PokemonsListProps) => {
+const PokemonsList = ({ pokemonsList, activeIndex, inputText, visibleSearch = false, setPokemonSearchList }: PokemonsListProps) => {
   return (
     <>
       {visibleSearch &&
       <li id="pokemons-list-box-option0" role="option" className={`pokemons-list-pokemon ${activeIndex ===  0? "active" : ""}`} key={"search-value"}>
-        Search for: <b>{inputText}</b>
+        <Button children={<span>Search for: <b>{inputText}</b></span>} type="simpleButton" onClick={() => setPokemonSearchList? setPokemonSearchList(pokemonsList ?? []): undefined}/>
       </li>}
       {pokemonsList.map((pokemon, index) => (
         <li id={activeIndex? `pokemons-list-box-option${index + 1}`: undefined} role="option" className={`pokemons-list-pokemon ${activeIndex === index + 1 ? "active" : ""}`} key={pokemon.name}>

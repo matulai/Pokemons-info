@@ -7,10 +7,11 @@ import { useNavigate } from "react-router-dom";
 import "@/styles/Search.css";
 
 interface SearchProps {
-  letterPokemonRecord: Record<string, SimplePokemon[]> | undefined;
+  letterPokemonRecord?: Record<string, SimplePokemon[]>;
+  setPokemonSearchList?: React.Dispatch<React.SetStateAction<SimplePokemon[]>>; 
 }
 
-const Search = ({ letterPokemonRecord }: SearchProps) => {
+const Search = ({ letterPokemonRecord, setPokemonSearchList }: SearchProps) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
   const [pokemonsOptions, setPokemonsOptions] = useState<SimplePokemon[]>([]);
@@ -83,7 +84,7 @@ const Search = ({ letterPokemonRecord }: SearchProps) => {
         aria-activedescendant={`pokemons-list-box-option${activeIndex}`}
       />
       <ul ref={listRef} id="pokemons-list-box" role="listbox" className="pokemons-list">
-        <PokemonsList pokemonsList={pokemonsOptions} activeIndex={activeIndex} inputText={inputText} visibleSearch={pokemonsOptions.length !== 0}/>
+        <PokemonsList pokemonsList={pokemonsOptions} activeIndex={activeIndex} inputText={inputText} visibleSearch={pokemonsOptions.length !== 0} setPokemonSearchList={setPokemonSearchList}/>
       </ul>
     </div>
   );
