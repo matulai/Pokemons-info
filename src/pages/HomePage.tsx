@@ -5,7 +5,9 @@ import { useState } from "react";
 
 const HomePage = () => {
   const { data, error, isLoading } = usePokemonsQuery();
-  const [pokemonSearchList, setPokemonSearchList] = useState<SimplePokemon[]>([]);
+  const [pokemonSearchList, setPokemonSearchList] = useState<SimplePokemon[]>(
+    []
+  );
 
   if (isLoading) {
     return <div> loading... </div>;
@@ -16,7 +18,10 @@ const HomePage = () => {
 
   return (
     <>
-      <Search letterPokemonRecord={data} setPokemonSearchList={setPokemonSearchList} />
+      <Search
+        letterPokemonRecord={data}
+        setPokemonSearchList={setPokemonSearchList}
+      />
       <PokemonsList pokemonsList={pokemonSearchList} />
     </>
   );

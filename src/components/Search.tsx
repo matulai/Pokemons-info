@@ -8,7 +8,7 @@ import "@/styles/Search.css";
 
 interface SearchProps {
   letterPokemonRecord?: Record<string, SimplePokemon[]>;
-  setPokemonSearchList: React.Dispatch<React.SetStateAction<SimplePokemon[]>>; 
+  setPokemonSearchList: React.Dispatch<React.SetStateAction<SimplePokemon[]>>;
 }
 
 const Search = ({ letterPokemonRecord, setPokemonSearchList }: SearchProps) => {
@@ -26,12 +26,12 @@ const Search = ({ letterPokemonRecord, setPokemonSearchList }: SearchProps) => {
     if (event.key === "ArrowDown") {
       event.preventDefault();
       setActiveIndex(prev => {
-        return (pokemonsOptions.length + 1) === prev + 1? 0 : prev + 1;
+        return pokemonsOptions.length + 1 === prev + 1 ? 0 : prev + 1;
       });
     } else if (event.key === "ArrowUp") {
       event.preventDefault();
       setActiveIndex(prev => {
-        return (prev - 1) < 0 ? pokemonsOptions.length : prev - 1;
+        return prev - 1 < 0 ? pokemonsOptions.length : prev - 1;
       });
     } else if (event.key === "PageDown") {
       // Fn + ArrowDown (Ir al último)
@@ -43,7 +43,9 @@ const Search = ({ letterPokemonRecord, setPokemonSearchList }: SearchProps) => {
       // Redirigir al enlace activo si se presiona Enter
       const selectedPokemon = pokemonsOptions[activeIndex - 1];
       if (selectedPokemon) {
-        navigate(`/pokemon/${selectedPokemon.url.match(/\/(\d+)\/$/)?.[1] ?? ""}`);
+        navigate(
+          `/pokemon/${selectedPokemon.url.match(/\/(\d+)\/$/)?.[1] ?? ""}`
+        );
       } else {
         setPokemonSearchList(pokemonsOptions);
       }
@@ -55,7 +57,10 @@ const Search = ({ letterPokemonRecord, setPokemonSearchList }: SearchProps) => {
     setInputText(newText);
     if (letterPokemonRecord && newText[0]) {
       setPokemonsOptions(
-        allSimplePokemonsStartsWith(newText, letterPokemonRecord[newText[0]]).slice(0, 6)
+        allSimplePokemonsStartsWith(
+          newText,
+          letterPokemonRecord[newText[0]]
+        ).slice(0, 6)
       );
     } else {
       setPokemonsOptions([]);
@@ -85,8 +90,18 @@ const Search = ({ letterPokemonRecord, setPokemonSearchList }: SearchProps) => {
         aria-expanded="true"
         aria-activedescendant={`pokemons-options-list-box-option${activeIndex}`}
       />
-      <ul ref={listRef} id="search-container-options-box" role="listbox" className="search-container-options">
-        <PokemonsOptionsList pokemonsList={pokemonsOptions} activeIndex={activeIndex} inputText={inputText} setPokemonSearchList={setPokemonSearchList}/>
+      <ul
+        ref={listRef}
+        id="search-container-options-box"
+        role="listbox"
+        className="search-container-options"
+      >
+        <PokemonsOptionsList
+          pokemonsList={pokemonsOptions}
+          activeIndex={activeIndex}
+          inputText={inputText}
+          setPokemonSearchList={setPokemonSearchList}
+        />
       </ul>
     </div>
   );

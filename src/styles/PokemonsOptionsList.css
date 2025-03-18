@@ -23,6 +23,7 @@
   border-top: 1px solid;
 }
 
-.active, .pokemons-options-list-pokemon:hover {
-  background-color: #a5a5a5
+.active,
+.pokemons-options-list-pokemon:hover {
+  background-color: #a5a5a5;
 }

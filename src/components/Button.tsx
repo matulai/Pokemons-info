@@ -1,8 +1,8 @@
-import "@/styles/Button.css"
+import "@/styles/Button.css";
 
 interface ButtonProps {
   children?: React.ReactNode;
-  type: 'simpleButton';
+  type: "simpleButton";
   onClick?: () => void;
   title?: string;
 }
@@ -12,7 +12,7 @@ const Button = ({ children, onClick, title, type }: ButtonProps) => {
     simpleButton: "cover-all",
   };
 
-  const className = styles[type] || '';
+  const className = styles[type] || "";
 
   return (
     <button className={className} onClick={onClick}>

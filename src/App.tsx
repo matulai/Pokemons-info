@@ -16,7 +16,7 @@ function App() {
         </Routes>
       </main>
       <footer className="page-footer">
-          <p>© 2025 Pokemon info.</p>
+        <p>© 2025 Pokemon info.</p>
       </footer>
     </BrowserRouter>
   );
