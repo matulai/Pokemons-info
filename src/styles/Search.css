@@ -1,14 +1,8 @@
 .search-container {
   display: inline-block;
-  width: 275px;
+  width: 220px;
   padding-top: 0.5rem;
   position: relative;
-}
-
-@media (min-width: 1280px) {
-  .search-container {
-    width: 500px;
-  }
 }
 
 .search-container-input {
@@ -26,4 +20,16 @@
   max-height: 230px;
   width: inherit;
   padding: 0;
+}
+
+@media (min-width: 720px) {
+  .search-container {
+    width: 420px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .search-container {
+    width: 500px;
+  }
 }
