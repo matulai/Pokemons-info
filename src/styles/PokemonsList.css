@@ -12,6 +12,13 @@
   }
 }
 
+@media (min-width: 1920px) {
+  .pokemons-list {
+    grid-template-columns: repeat(auto-fill, minmax(192px, 1fr));
+    width: 960px;
+  }
+}
+
 .pokemons-list-pokemon {
   display: flex;
   flex-direction: column;

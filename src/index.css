@@ -22,6 +22,24 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@media (min-width: 320px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 720px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    font-size: 18px;
+  }
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -44,12 +62,12 @@ a:hover {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 3rem;
   line-height: 1.1;
 }
 
 button {
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: 500;
   font-family: inherit;
   cursor: pointer;

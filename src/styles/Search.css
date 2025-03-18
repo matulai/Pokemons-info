@@ -5,6 +5,12 @@
   position: relative;
 }
 
+@media (min-width: 1280px) {
+  .search-container {
+    width: 500px;
+  }
+}
+
 .search-container-input {
   background-color: #323342;
   border-radius: 20px;
