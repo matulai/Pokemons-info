@@ -13,6 +13,7 @@ const PokemonsList = ({ pokemonsList }: PokemonsOptionsListProps) => {
       {pokemonsList.map(pokemon => (
         <li className="pokemons-list-pokemon" key={pokemon.name}>
           <img
+            className="pokemons-list-pokemon-image"
             src={`https://raw.githubusercontent.com/matulai/Pokemon-sprites/master/sprites/pokemon/${pokemon.url.match(/\/(\d+)\/$/)?.[1] ?? ""}.png`}
             alt={`${pokemon.name} image`}
           />

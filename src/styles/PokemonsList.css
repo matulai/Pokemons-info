@@ -1,12 +1,24 @@
 .pokemons-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  width: 450px;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  width: 480px;
   padding: 0;
+  justify-content: center;
+}
+
+@media (max-width: 720px) {
+  .pokemons-list {
+    width: 288px;
+  }
 }
 
 .pokemons-list-pokemon {
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+
+.pokemons-list-pokemon-image {
+  max-width: 100%;
+  height: auto;
 }
