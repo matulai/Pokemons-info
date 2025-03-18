@@ -71,7 +71,7 @@ const Search = ({ letterPokemonRecord, setPokemonSearchList }: SearchProps) => {
   }
 
   return (
-    <div className="search-input">
+    <div className="search-container">
       <input
         type="search"
         role="combobox"
@@ -79,13 +79,13 @@ const Search = ({ letterPokemonRecord, setPokemonSearchList }: SearchProps) => {
         onFocus={handleOnChange}
         onChange={handleOnChange}
         onKeyDown={handleOnKeyDown}
-        className="search-input-pokemons"
+        className="search-container-input"
         placeholder="search pokemon"
-        aria-controls="search-input-pokemons-list-box"
+        aria-controls="search-container-options-box"
         aria-expanded="true"
-        aria-activedescendant={`pokemons-list-box-option${activeIndex}`}
+        aria-activedescendant={`pokemons-options-list-box-option${activeIndex}`}
       />
-      <ul ref={listRef} id="search-input-pokemons-list-box" role="listbox" className="search-input-pokemons-list">
+      <ul ref={listRef} id="search-container-options-box" role="listbox" className="search-container-options">
         <PokemonsOptionsList pokemonsList={pokemonsOptions} activeIndex={activeIndex} inputText={inputText} setPokemonSearchList={setPokemonSearchList}/>
       </ul>
     </div>

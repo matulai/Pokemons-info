@@ -1,10 +1,10 @@
-.search-input {
+.search-container {
   display: inline-block;
   width: 275px;
   padding: 0.5rem;
 }
 
-.search-input-pokemons {
+.search-container-input {
   background-color: #323342;
   border-radius: 20px;
   border: 1px solid grey;
@@ -12,7 +12,7 @@
   padding: 0.75rem 1rem;
 }
 
-.search-input-pokemons-list {
+.search-container-options {
   overflow-y: auto;
   max-height: 230px;
   padding: 0rem;
