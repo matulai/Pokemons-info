@@ -11,20 +11,24 @@
 }
 
 .pokemons-list-pokemon {
-  display: flex;
-  flex-direction: column;
   box-shadow: 1px 1px 3px black;
   border-radius: 6px;
   padding-bottom: 6px;
 }
 
-.pokemons-list-pokemon-image {
-  max-width: 100%;
-  height: auto;
+.pokemons-list-pokemon:hover {
+  background-color: #323342;
 }
 
 .pokemons-list-pokemon-link {
   font-size: 0.75rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.pokemons-list-pokemon-image {
+  max-width: 100%;
+  height: auto;
 }
 
 .invisible{
