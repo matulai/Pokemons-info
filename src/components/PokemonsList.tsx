@@ -8,8 +8,9 @@ interface PokemonsOptionsListProps {
 }
 
 const PokemonsList = ({ pokemonsList }: PokemonsOptionsListProps) => {
+  console.log(pokemonsList)
   return (
-    <ul className="pokemons-list">
+    <ul className={`pokemons-list ${pokemonsList.length !== 0? "": "invisible"}`}>
       {pokemonsList.map(pokemon => (
         <li className="pokemons-list-pokemon" key={pokemon.name}>
           <img

@@ -27,6 +27,10 @@
   font-size: 0.75rem;
 }
 
+.invisible{
+  visibility: hidden;
+}
+
 @media (min-width: 720px) {
   .pokemons-list {
     width: 516px;
