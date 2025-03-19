@@ -20,6 +20,11 @@
   max-height: 230px;
   width: inherit;
   padding: 0;
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
 }
 
 @media (min-width: 720px) {

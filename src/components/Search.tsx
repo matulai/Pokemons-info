@@ -15,9 +15,12 @@ const Search = ({ letterPokemonRecord, setPokemonSearchList }: SearchProps) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
   const [pokemonsOptions, setPokemonsOptions] = useState<SimplePokemon[]>([]);
+  const [showOptions, setShowOptions] = useState<boolean>(false);
+
   const [inputText, setInputText] = useState<string>("");
 
   const listRef = useRef<HTMLUListElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const navigate = useNavigate();
 
@@ -48,6 +51,10 @@ const Search = ({ letterPokemonRecord, setPokemonSearchList }: SearchProps) => {
         );
       } else {
         setPokemonSearchList(pokemonsOptions);
+        // Saco el focus del input
+        inputRef.current?.blur();
+        // Oculto las opciones de busqueda.
+        setShowOptions(false);
       }
     }
   }
@@ -55,6 +62,7 @@ const Search = ({ letterPokemonRecord, setPokemonSearchList }: SearchProps) => {
   function handleOnChange(event: React.ChangeEvent<HTMLInputElement>) {
     const newText: string = event.target.value;
     setInputText(newText);
+    // TODO: Pagination.
     if (letterPokemonRecord && newText[0]) {
       setPokemonsOptions(
         allSimplePokemonsStartsWith(
@@ -67,10 +75,15 @@ const Search = ({ letterPokemonRecord, setPokemonSearchList }: SearchProps) => {
     }
   }
 
+  function handleOnFocus() {
+    setShowOptions(true);
+  }
+
   function handleOnBlur() {
+    // Si haces click en las opciones le da un tiempo para que tome primero el click 
     setTimeout(() => {
       if (!listRef.current?.contains(document.activeElement)) {
-        setPokemonsOptions([]);
+        setShowOptions(false);
       }
     }, 100);
   }
@@ -78,10 +91,11 @@ const Search = ({ letterPokemonRecord, setPokemonSearchList }: SearchProps) => {
   return (
     <div className="search-container">
       <input
+        ref={inputRef}
         type="search"
         role="combobox"
         onBlur={handleOnBlur}
-        onFocus={handleOnChange}
+        onFocus={handleOnFocus}
         onChange={handleOnChange}
         onKeyDown={handleOnKeyDown}
         className="search-container-input"
@@ -94,7 +108,7 @@ const Search = ({ letterPokemonRecord, setPokemonSearchList }: SearchProps) => {
         ref={listRef}
         id="search-container-options-box"
         role="listbox"
-        className="search-container-options"
+        className={`search-container-options ${showOptions? "visible": ""}`}
       >
         <PokemonsOptionsList
           pokemonsList={pokemonsOptions}
