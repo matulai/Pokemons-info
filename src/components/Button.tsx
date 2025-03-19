@@ -9,7 +9,7 @@ interface ButtonProps {
 
 const Button = ({ children, onClick, title, type }: ButtonProps) => {
   const styles = {
-    simpleButton: "cover-all",
+    simpleButton: "cover-all color-blue",
   };
 
   const className = styles[type] || "";

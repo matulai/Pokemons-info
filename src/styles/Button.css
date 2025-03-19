@@ -10,3 +10,11 @@
   cursor: pointer;
   outline: none;
 }
+
+.color-blue {
+  color: #646cff;
+}
+
+.color-blue:hover {
+  color: #535bf2;
+}
