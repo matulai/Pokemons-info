@@ -14,8 +14,7 @@ const HomePage = () => {
   }
 
   console.log(error?.message);
-  // TODO: HACER OTRO POKEMONS LIST CON GRID Y QUE MUESTRE IMAGENES
-
+  
   return (
     <>
       <Search

@@ -14,23 +14,23 @@ const PokemonsList = ({ pokemonsList }: PokemonsOptionsListProps) => {
 
   // Otra manera no se me ocurrio de resolver esto.
   // Resetear el contador de imágenes si la lista cambia
+  // Hay un render entra cambios de listas que tendra diferentes listas y se mostraran.
   if (prevList !== pokemonsList) {
     setLoadedImages(0);
     setPrevList(pokemonsList);
   }
 
-  console.log("pre", prevList, "actual", pokemonsList);
-  console.log("loadedImages", loadedImages, "pokemonsList", pokemonsList.length)
-
-  function handleOnLoad() {
-    setLoadedImages((prev) => prev + 1);
+  function handleOnLoad(index: number) {
+    if (index === pokemonsList.length - 1) {
+      setLoadedImages(index);
+    }
   }
 
-  const allImagesLoads = pokemonsList.length > 0 && loadedImages === pokemonsList.length;
-  console.log(allImagesLoads);
+  const allImagesLoads = pokemonsList.length > 0 && loadedImages === pokemonsList.length - 1;
+
   return (
     <ul className={`pokemons-list ${allImagesLoads? "visible": ""}`}>
-      {pokemonsList.map(pokemon => (
+      {pokemonsList.map((pokemon, index) => (
         <li className="pokemons-list-pokemon" key={pokemon.name}>
           <Link
             className="pokemons-list-pokemon-link"
@@ -40,7 +40,7 @@ const PokemonsList = ({ pokemonsList }: PokemonsOptionsListProps) => {
               className="pokemons-list-pokemon-link-image"
               src={`https://raw.githubusercontent.com/matulai/Pokemon-sprites/master/sprites/pokemon/${pokemon.url.match(/\/(\d+)\/$/)?.[1] ?? ""}.png`}
               alt={`${pokemon.name} image`}
-              onLoad={handleOnLoad}
+              onLoad={() => handleOnLoad(index)}
             />
             <p className="pokemons-list-pokemon-link-text">{pokemon.name}</p>
           </Link>
