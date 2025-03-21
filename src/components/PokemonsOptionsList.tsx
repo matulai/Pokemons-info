@@ -32,7 +32,7 @@ const PokemonsOptionsList = ({
                 Search for: <b>{inputText}</b>
               </span>
             }
-            type="simpleButton"
+            type="onlyIconCoverAllBlue"
             onClick={() => setPokemonSearchList(pokemonsList)}
           />
         </li>

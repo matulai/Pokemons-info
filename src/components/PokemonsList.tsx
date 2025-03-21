@@ -15,7 +15,7 @@ const PokemonsList = ({ pokemonsList }: PokemonsOptionsListProps) => {
   // Otra manera no se me ocurrio de resolver esto.
   // Resetear el contador de imágenes si la lista cambia
   // Hay un render entra cambios de listas que tendra diferentes listas y se mostraran.
-  if (prevList !== pokemonsList) {
+  if (JSON.stringify(prevList) !== JSON.stringify(pokemonsList)) {
     setLoadedImages(0);
     setPrevList(pokemonsList);
   }
