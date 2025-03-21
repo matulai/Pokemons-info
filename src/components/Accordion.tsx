@@ -15,6 +15,7 @@ const Accordion = ({ title, children }: AccordionProps) => {
       <div className="pokemon-about-container-header">
         {title}
         <Button
+          type="onlyIcon"
           children={
             showAboutContent ? (
               <ChevronDownIcon color="yellow" />

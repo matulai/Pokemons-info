@@ -1,15 +1,17 @@
 import "@/styles/Button.css";
 
 interface ButtonProps {
-  children?: React.ReactNode;
-  type: "simpleButton";
-  onClick?: () => void;
   title?: string;
+  onClick?: () => void;
+  children?: React.ReactNode;
+  type: "onlyIconCoverAllBlue" | "smallCircle" | "onlyIcon";
 }
 
 const Button = ({ children, onClick, title, type }: ButtonProps) => {
   const styles = {
-    simpleButton: "cover-all color-blue",
+    onlyIcon: "button color-blue",
+    smallCircle: "button circle",
+    onlyIconCoverAllBlue: "button cover-all color-blue",
   };
 
   const className = styles[type] || "";
