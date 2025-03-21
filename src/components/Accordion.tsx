@@ -18,9 +18,9 @@ const Accordion = ({ title, children }: AccordionProps) => {
           type="onlyIcon"
           children={
             showAboutContent ? (
-              <ChevronDownIcon color="yellow" />
+              <ChevronDownIcon color="black" />
             ) : (
-              <ChevronUpIcon color="yellow" />
+              <ChevronUpIcon color="black" />
             )
           }
           onClick={() => setShowAboutContent(!showAboutContent)}

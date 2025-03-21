@@ -1,4 +1,7 @@
 .button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   outline: none;
   font: inherit;
@@ -23,9 +26,13 @@
 }
 
 .circle {
+  background: #ffff12;
+  border: 1px solid black;
+  border-radius: 100px;
   width: 2rem;
   height: 2rem;
-  background: #ffff12;
-  border: 1.5px solid rgba(50, 50, 50, 0.87);
-  border-radius: 100px;
+}
+
+.circle:hover {
+  transform: scale(1.1);
 }

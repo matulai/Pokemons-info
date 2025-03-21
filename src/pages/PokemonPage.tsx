@@ -30,7 +30,16 @@ const PokemonPage = () => {
       <div className="pokemon-presentation">
         <img src={data?.imageUrl} alt="Imagen de un pokemon" />
         <audio ref={audioRef} src={data?.criesFile} />
-        <Button type="smallCircle" onClick={togglePlay} children={<PlayIcon color="yellow" />} />
+        <Button 
+          type="smallCircle" 
+          onClick={togglePlay} 
+          children={
+            <PlayIcon 
+              color="black"
+              width="100%"
+              height="100%"
+            />} 
+        />
       </div>
       <div className="pokemon-about">
         <Accordion
