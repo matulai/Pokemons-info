@@ -3,7 +3,7 @@
   border-right: 1px solid;
   border-bottom: 1px solid;
   padding: 0.25rem 0;
-  background-color: #323342;
+  background-color: var(--color-grey-hover);
 }
 
 .pokemons-options-list-pokemon-link {
@@ -26,5 +26,5 @@
 
 .active,
 .pokemons-options-list-pokemon:hover {
-  background-color: #a5a5a5;
+  background-color: var(--color-ligth-grey-hover);
 }
