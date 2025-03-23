@@ -1,3 +1,5 @@
+import "@/styles/ImagesList.css";
+
 interface contentImages {
   title: string;
   images: string[];
@@ -5,11 +7,13 @@ interface contentImages {
 
 const ImagesList = ({ title, images }: contentImages) => {
   return (
-    <div>
+    <div className="images-list">
       <span>{title}</span>
-      {images.map((imageUrl: string, index: number) => (
-        <img key={index} src={imageUrl} alt="type icon" />
-      ))}
+      <div className="images-list-items">
+        {images.map((imageUrl: string, index: number) => (
+          <img key={index} src={imageUrl} alt="type icon" />
+        ))}
+      </div>
     </div>
   );
 };

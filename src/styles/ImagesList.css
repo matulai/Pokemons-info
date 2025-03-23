@@ -1,0 +1,12 @@
+.images-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.images-list-items {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}
