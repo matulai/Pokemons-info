@@ -19,6 +19,12 @@
   padding: 1rem;
 }
 
+.page-header-link {
+  font-weight: inherit;
+  color: inherit;
+  text-decoration: none;
+}
+
 .page-footer {
   padding: 1.25rem 1.5rem;
   width: 100%;

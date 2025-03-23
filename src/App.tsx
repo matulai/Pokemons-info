@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HomePage, PokemonPage } from "@/pages";
+import { Link } from "react-router-dom";
 
 import "@/App.css";
 
@@ -7,7 +8,11 @@ function App() {
   return (
     <BrowserRouter>
       <header className="page-header">
-        <h1>Pokemon info</h1>
+        <h1>
+          <Link to="/" className="page-header-link">
+            Pokemon info
+          </Link>
+        </h1>
       </header>
       <main className="page-main">
         <Routes>
