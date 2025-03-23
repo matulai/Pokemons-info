@@ -8,6 +8,8 @@ import { usePokemonQuery } from "@/hooks";
 import { PlayIcon } from "@/icons";
 import { useRef } from "react";
 
+import "@/styles/PokemonPage.css";
+
 const PokemonPage = () => {
   const { data, error, isLoading } = usePokemonQuery();
 

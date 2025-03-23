@@ -1,0 +1,27 @@
+.pokemon-presentation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-background);
+  box-shadow: 2px 2px 6px black;
+  padding: 0.5rem;
+  border-radius: 12px;
+}
+
+.pokemon-about {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: var(--color-background);
+  box-shadow: 2px 2px 6px black;
+  padding: 0.5rem;
+  border-radius: 12px;
+  width: 440px;
+  gap: 12px
+}
+
+@media (max-width: 720px) {
+  .pokemon-about {
+    width: 280px;
+  }
+}
