@@ -1,0 +1,26 @@
+.pokemon-about-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.pokemon-about-container-header {
+  display: flex;
+  flex-direction: row;
+  padding: 0.25rem 0.5rem;
+  border: 1.5px solid black;
+  border-radius: 12px;
+  justify-content: space-between;
+}
+
+.pokemon-about-container-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0.5rem;
+  transition: display 0.3s ease-out;
+}
+
+.pokemon-about-container-content.no-active {
+  display: none
+}

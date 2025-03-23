@@ -2,6 +2,8 @@ import { ChevronUpIcon, ChevronDownIcon } from "@/icons";
 import { useState } from "react";
 import { Button } from "@/components";
 
+import "@/styles/Accordion.css";
+
 interface AccordionProps {
   title: string;
   children: React.ReactNode;
@@ -18,20 +20,18 @@ const Accordion = ({ title, children }: AccordionProps) => {
           type="onlyIcon"
           children={
             showAboutContent ? (
-              <ChevronDownIcon color="black" />
-            ) : (
               <ChevronUpIcon color="black" />
+            ) : (
+              <ChevronDownIcon color="black" />
             )
           }
           onClick={() => setShowAboutContent(!showAboutContent)}
         />
       </div>
       <div
-        className={
-          showAboutContent
-            ? "pokemon-about-container-content"
-            : "pokemon-about-container-content no-visible"
-        }
+        className={`pokemon-about-container-content ${
+          showAboutContent ? "" : "no-active"
+        }`}
       >
         {children}
       </div>
