@@ -16,11 +16,11 @@ const PokemonTypes = ({ pokemonInfo }: PokemonTypesProps) => {
   console.log(error?.message);
 
   return (
-    <div>
-      <div>
-        <span>Type: </span>
-        <img src={data?.sprites} alt="type icon" />
-      </div>
+    <>
+      <ImagesList
+        title="Type: "
+        images={[data!.sprites]}
+      />
       <ImagesList
         title="double_damage_from"
         images={data!.sprites_double_damage_from}
@@ -42,7 +42,7 @@ const PokemonTypes = ({ pokemonInfo }: PokemonTypesProps) => {
         images={data!.sprites_no_damage_from}
       />
       <ImagesList title="no_damage_to" images={data!.sprites_no_damage_to} />
-    </div>
+    </>
   );
 };
 
