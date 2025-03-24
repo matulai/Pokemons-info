@@ -10,7 +10,11 @@ import { useRef } from "react";
 
 import "@/styles/PokemonPage.css";
 
-const PokemonPage = () => {
+interface PokemonPageProps {
+  showError: (string: string) => void;
+}
+
+const PokemonPage = ({showError} : PokemonPageProps) => {
   const { data, error, isLoading } = usePokemonQuery();
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -23,6 +27,10 @@ const PokemonPage = () => {
 
   if (isLoading) {
     return <div>loading...</div>;
+  }
+
+  if(error) {
+    showError(error.message);
   }
 
   console.log(error?.message);

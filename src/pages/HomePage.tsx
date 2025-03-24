@@ -3,7 +3,11 @@ import { usePokemonsQuery } from "@/hooks";
 import { SimplePokemon } from "@/types";
 import { useState } from "react";
 
-const HomePage = () => {
+interface HomePageProps {
+  showError: (string: string) => void;
+}
+
+const HomePage = ({showError}: HomePageProps) => {
   const { data, error, isLoading } = usePokemonsQuery();
   const [pokemonSearchList, setPokemonSearchList] = useState<SimplePokemon[]>(
     []
@@ -13,7 +17,9 @@ const HomePage = () => {
     return <div> loading... </div>;
   }
 
-  console.log(error?.message);
+  if(error) {
+    showError(error.message);
+  }
   
   return (
     <>
