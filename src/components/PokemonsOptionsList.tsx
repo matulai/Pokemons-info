@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "@/styles/PokemonsOptionsList.css";
 
 interface PokemonsOptionsListProps {
-  setPokemonSearchList: React.Dispatch<React.SetStateAction<SimplePokemon[]>>;
+  setPokemonSearchList: () => void;
   pokemonsList: SimplePokemon[];
   activeIndex: number;
   inputText: string;
@@ -33,7 +33,7 @@ const PokemonsOptionsList = ({
               </span>
             }
             type="onlyIconCoverAllBlue"
-            onClick={() => setPokemonSearchList(pokemonsList)}
+            onClick={setPokemonSearchList}
           />
         </li>
       )}

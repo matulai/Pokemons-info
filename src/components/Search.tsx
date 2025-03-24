@@ -15,6 +15,7 @@ const Search = ({ letterPokemonRecord, setPokemonSearchList }: SearchProps) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
   const [pokemonsOptions, setPokemonsOptions] = useState<SimplePokemon[]>([]);
+  const [pokemonsToShow, setPokemonsToShow] = useState<SimplePokemon[]>([]);
   const [showOptions, setShowOptions] = useState<boolean>(false);
 
   const [inputText, setInputText] = useState<string>("");
@@ -50,7 +51,7 @@ const Search = ({ letterPokemonRecord, setPokemonSearchList }: SearchProps) => {
           `/pokemon/${selectedPokemon.url.match(/\/(\d+)\/$/)?.[1] ?? ""}`
         );
       } else {
-        setPokemonSearchList(pokemonsOptions);
+        setPokemonSearchList(pokemonsToShow);
         // Saco el focus del input
         inputRef.current?.blur();
         // Oculto las opciones de busqueda.
@@ -64,14 +65,12 @@ const Search = ({ letterPokemonRecord, setPokemonSearchList }: SearchProps) => {
     setInputText(newText);
     // TODO: Pagination.
     if (letterPokemonRecord && newText[0]) {
-      setPokemonsOptions(
-        allSimplePokemonsStartsWith(
-          newText,
-          letterPokemonRecord[newText[0]]
-        ).slice(0, 6)
-      );
+      const newPokemons = allSimplePokemonsStartsWith(newText,letterPokemonRecord[newText[0]])
+      setPokemonsOptions(newPokemons.slice(0, 6));
+      setPokemonsToShow(newPokemons);
     } else {
       setPokemonsOptions([]);
+      setPokemonsToShow([]);
     }
   }
 
@@ -114,7 +113,7 @@ const Search = ({ letterPokemonRecord, setPokemonSearchList }: SearchProps) => {
           pokemonsList={pokemonsOptions}
           activeIndex={activeIndex}
           inputText={inputText}
-          setPokemonSearchList={setPokemonSearchList}
+          setPokemonSearchList={() => setPokemonSearchList(pokemonsToShow)}
         />
       </ul>
     </div>
