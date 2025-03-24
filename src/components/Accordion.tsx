@@ -35,8 +35,12 @@ const Accordion = ({ title, children }: AccordionProps) => {
         className="pokemon-about-container-content"
         style={
           showAboutContent
-          ? { height: contentHeight.current ? contentHeight.current.scrollHeight : "auto" }
-          : { height: "0px" }
+            ? {
+                height: contentHeight.current
+                  ? contentHeight.current.scrollHeight
+                  : "auto",
+              }
+            : { height: "0px" }
         }
       >
         {children}

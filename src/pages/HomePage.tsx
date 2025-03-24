@@ -7,7 +7,7 @@ interface HomePageProps {
   showError: (string: string) => void;
 }
 
-const HomePage = ({showError}: HomePageProps) => {
+const HomePage = ({ showError }: HomePageProps) => {
   const { data, error, isLoading } = usePokemonsQuery();
   const [pokemonSearchList, setPokemonSearchList] = useState<SimplePokemon[]>(
     []
@@ -17,10 +17,10 @@ const HomePage = ({showError}: HomePageProps) => {
     return;
   }
 
-  if(error) {
+  if (error) {
     showError(error.message);
   }
-  
+
   return (
     <>
       <Search

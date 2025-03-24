@@ -14,7 +14,7 @@ interface PokemonPageProps {
   showError: (string: string) => void;
 }
 
-const PokemonPage = ({showError} : PokemonPageProps) => {
+const PokemonPage = ({ showError }: PokemonPageProps) => {
   const { data, error, isLoading } = usePokemonQuery();
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -29,7 +29,7 @@ const PokemonPage = ({showError} : PokemonPageProps) => {
     return;
   }
 
-  if(error) {
+  if (error) {
     showError(error.message);
   }
 
@@ -40,15 +40,10 @@ const PokemonPage = ({showError} : PokemonPageProps) => {
       <div className="pokemon-presentation">
         <img src={data?.imageUrl} alt="Imagen de un pokemon" />
         <audio ref={audioRef} src={data?.criesFile} />
-        <Button 
-          type="smallCircle" 
-          onClick={togglePlay} 
-          children={
-            <PlayIcon 
-              color="black"
-              width="100%"
-              height="100%"
-            />} 
+        <Button
+          type="smallCircle"
+          onClick={togglePlay}
+          children={<PlayIcon color="black" width="100%" height="100%" />}
         />
       </div>
       <div className="pokemon-about">

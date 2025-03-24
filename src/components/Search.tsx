@@ -80,7 +80,7 @@ const Search = ({ letterPokemonRecord, setPokemonSearchList }: SearchProps) => {
   }
 
   function handleOnBlur() {
-    // Si haces click en las opciones le da un tiempo para que tome primero el click 
+    // Si haces click en las opciones le da un tiempo para que tome primero el click
     setTimeout(() => {
       if (!listRef.current?.contains(document.activeElement)) {
         setShowOptions(false);
@@ -108,7 +108,7 @@ const Search = ({ letterPokemonRecord, setPokemonSearchList }: SearchProps) => {
         ref={listRef}
         id="search-container-options-box"
         role="listbox"
-        className={`search-container-options ${showOptions? "visible": ""}`}
+        className={`search-container-options ${showOptions ? "visible" : ""}`}
       >
         <PokemonsOptionsList
           pokemonsList={pokemonsOptions}

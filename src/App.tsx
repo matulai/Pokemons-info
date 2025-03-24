@@ -23,7 +23,10 @@ function App() {
       <main className="page-main">
         <Routes>
           <Route path="/" element={<HomePage showError={showError} />} />
-          <Route path="/pokemon/:id" element={<PokemonPage showError={showError} />} />
+          <Route
+            path="/pokemon/:id"
+            element={<PokemonPage showError={showError} />}
+          />
         </Routes>
       </main>
       <ToastContainer />

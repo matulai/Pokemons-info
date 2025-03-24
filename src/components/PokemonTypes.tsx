@@ -17,10 +17,7 @@ const PokemonTypes = ({ pokemonInfo }: PokemonTypesProps) => {
 
   return (
     <>
-      <ImagesList
-        title="Type: "
-        images={[data!.sprites]}
-      />
+      <ImagesList title="Type: " images={[data!.sprites]} />
       <ImagesList
         title="double_damage_from"
         images={data!.sprites_double_damage_from}

@@ -26,10 +26,11 @@ const PokemonsList = ({ pokemonsList }: PokemonsOptionsListProps) => {
     }
   }
 
-  const allImagesLoads = pokemonsList.length > 0 && loadedImages === pokemonsList.length - 1;
+  const allImagesLoads =
+    pokemonsList.length > 0 && loadedImages === pokemonsList.length - 1;
 
   return (
-    <ul className={`pokemons-list ${allImagesLoads? "visible": ""}`}>
+    <ul className={`pokemons-list ${allImagesLoads ? "visible" : ""}`}>
       {pokemonsList.map((pokemon, index) => (
         <li className="pokemons-list-pokemon" key={pokemon.name}>
           <Link
