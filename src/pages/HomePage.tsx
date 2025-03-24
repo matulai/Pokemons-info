@@ -27,7 +27,7 @@ const HomePage = ({ showError }: HomePageProps) => {
         letterPokemonRecord={data}
         setPokemonSearchList={setPokemonSearchList}
       />
-      <PokemonsList pokemonsList={pokemonSearchList} />
+      <PokemonsList pokemonsList={pokemonSearchList} amountPerPage={20}/>
     </>
   );
 };
