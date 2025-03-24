@@ -14,7 +14,7 @@ const HomePage = ({showError}: HomePageProps) => {
   );
 
   if (isLoading) {
-    return <div> loading... </div>;
+    return;
   }
 
   if(error) {
