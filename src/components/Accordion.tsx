@@ -1,5 +1,5 @@
 import { ChevronUpIcon, ChevronDownIcon } from "@/icons";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "@/components";
 
 import "@/styles/Accordion.css";
@@ -11,6 +11,8 @@ interface AccordionProps {
 
 const Accordion = ({ title, children }: AccordionProps) => {
   const [showAboutContent, setShowAboutContent] = useState<boolean>(false);
+
+  const contentHeight = useRef<HTMLDivElement>(null);
 
   return (
     <div className="pokemon-about-container">
@@ -29,9 +31,13 @@ const Accordion = ({ title, children }: AccordionProps) => {
         />
       </div>
       <div
-        className={`pokemon-about-container-content ${
-          showAboutContent ? "" : "no-active"
-        }`}
+        ref={contentHeight}
+        className="pokemon-about-container-content"
+        style={
+          showAboutContent
+          ? { height: contentHeight.current ? contentHeight.current.scrollHeight : "auto" }
+          : { height: "0px" }
+        }
       >
         {children}
       </div>
