@@ -14,17 +14,17 @@
 }
 
 .search-container-options {
+  display: none;
   position: absolute;
   top: 55px;
   left: 0;
   max-height: 230px;
   width: inherit;
   padding: 0;
-  visibility: hidden;
 }
 
 .visible {
-  visibility: visible;
+  display: block;
 }
 
 @media (min-width: 720px) {
