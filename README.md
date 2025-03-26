@@ -6,7 +6,7 @@ Pokémon Info es una aplicación web que permite a los usuarios explorar informa
 
 - Buscar pokémones por nombre.
 - Ver detalles de un pokémon, inclutendo, numero de pokedex, tipo, debil contra y más.
-![Pokémon Image](/captura-pantalla-pokemon-info-1.png)
+![Pokémon Image](public/captura-pantalla-pokemon-info-1.png)
 
 ## Tecnologías
 
